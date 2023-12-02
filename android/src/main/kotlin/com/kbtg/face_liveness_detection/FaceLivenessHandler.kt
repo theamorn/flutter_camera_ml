@@ -1,0 +1,33 @@
+package com.kbtg.face_liveness_detection
+
+import android.os.Handler
+import android.os.Looper
+import io.flutter.plugin.common.BinaryMessenger
+import io.flutter.plugin.common.EventChannel
+
+class FaceLivenessHandler(binaryMessenger: BinaryMessenger) : EventChannel.StreamHandler {
+
+    private var eventSink: EventChannel.EventSink? = null
+
+    private val eventChannel = EventChannel(
+        binaryMessenger, "com.kbtg.face_liveness_detector/liveness/event"
+    )
+
+    init {
+        eventChannel.setStreamHandler(this)
+    }
+
+    fun publishEvent(event: Map<String, Any>) {
+        Handler(Looper.getMainLooper()).post {
+            eventSink?.success(event)
+        }
+    }
+
+    override fun onListen(event: Any?, eventSink: EventChannel.EventSink?) {
+        this.eventSink = eventSink
+    }
+
+    override fun onCancel(event: Any?) {
+        this.eventSink = null
+    }
+}
