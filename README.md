@@ -7,6 +7,9 @@ This template serves as a starting point for implementing a Camera and connectin
 This project is associated with the article available at:
 [Implementing Face Liveness Detection in Flutter with High Performance](https://medium.com/kbtg-life/implementing-face-liveness-detection-in-flutter-with-high-performance-6997edd28b29)
 
+Here's the VDO from the demo
+https://www.youtube.com/watch?v=kfFJI_ipdso
+
 To use this template, follow these steps:
 
 ### iOS
